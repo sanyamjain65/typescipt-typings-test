@@ -14,7 +14,8 @@
     "react-scripts": "3.2.0",
     "styled-components": "^4.3.2",
     "tslint": "^5.20.1",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.2",
+    "vwo-node-sdk": "file:../vwo-node-sdk"
   },
   "scripts": {
     "start": "react-scripts start",

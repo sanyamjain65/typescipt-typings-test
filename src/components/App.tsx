@@ -3,7 +3,8 @@ import { Task } from './../models/task';
 import { NewTaskForm } from './NewTaskForm';
 import { TaskList } from './TaskList';
 import Wrapper from './wrappers/Wrapper';
-
+import  vwoSDK from "vwo-node-sdk";
+ 
 interface State {
   newTask: Task;
   tasks: Task[];
@@ -18,6 +19,13 @@ class App extends Component<{}, State> {
     tasks: []
   };
 
+  getSettingsFile = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    vwoSDK.getSettingsFile('469557', 'ad11e9df1e7ed7ad792d0f11539507e5').then((value) => {
+      console.log("settings are ", value);
+      
+    });
+  }
   addTask = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     this.setState(previousState => ({
@@ -44,7 +52,7 @@ class App extends Component<{}, State> {
         <h2>Hello React TS!</h2>
         <NewTaskForm
           task={this.state.newTask}
-          onAdd={this.addTask}
+          onAdd={this.getSettingsFile}
           onChange={this.handleTaskChange}
         />
         <TaskList tasks={this.state.tasks} />
